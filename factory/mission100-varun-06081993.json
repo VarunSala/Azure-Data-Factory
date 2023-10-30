@@ -1,0 +1,9 @@
+{
+	"name": "mission100-varun-06081993",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "640a0811-3105-4f86-aa5c-8daddb2c8970",
+		"tenantId": "7ac1de79-8d6d-4a98-b171-fa856b963cc3"
+	}
+}

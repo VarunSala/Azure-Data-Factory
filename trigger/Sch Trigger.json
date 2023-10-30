@@ -1,0 +1,36 @@
+{
+	"name": "Sch Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Merged_Files",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"file": "@TriggerBody().fileName"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2023-10-29T01:53:00",
+				"timeZone": "India Standard Time",
+				"schedule": {
+					"minutes": [
+						30
+					],
+					"hours": [
+						17,
+						22
+					]
+				}
+			}
+		}
+	}
+}

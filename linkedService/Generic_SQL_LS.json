@@ -1,0 +1,18 @@
+{
+	"name": "Generic_SQL_LS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AKV_LS",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "databasePassword"
+			}
+		}
+	}
+}

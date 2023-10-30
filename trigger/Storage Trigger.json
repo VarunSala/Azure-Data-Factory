@@ -1,0 +1,18 @@
+{
+	"name": "Storage Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/landing/blobs/CSV/",
+			"blobPathEndsWith": ".txt",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/0e92492d-16f9-421f-b8ad-972823ec826c/resourceGroups/azurelib-academy/providers/Microsoft.Storage/storageAccounts/varun06081993adls",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
