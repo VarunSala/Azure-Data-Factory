@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "mission100-varun-06081993"
+		},
+		"ADLS_CSV_LS_accountKey": {
+			"value": ""
+		},
+		"Generic_blob_LS_connectionString": {
+			"value": ""
+		},
+		"JSON_LS_accountKey": {
+			"value": ""
+		},
+		"SQL_LS_connectionString": {
+			"value": ""
+		},
+		"ADLS_CSV_LS_properties_typeProperties_url": {
+			"value": "https://varun06081993adls.dfs.core.windows.net/"
+		},
+		"AKV_LS_properties_typeProperties_baseUrl": {
+			"value": "https://mission100ade.vault.azure.net/"
+		},
+		"Generic_SQL_LS_properties_typeProperties_connectionString_secretName": {
+			"value": "databasePassword"
+		},
+		"JSON_LS_properties_typeProperties_url": {
+			"value": "https://varun06081993adls.dfs.core.windows.net/"
+		},
+		"Sch Trigger_properties_Merged_Files_parameters_file": {
+			"value": "@TriggerBody().fileName"
+		},
+		"Storage Trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/0e92492d-16f9-421f-b8ad-972823ec826c/resourceGroups/azurelib-academy/providers/Microsoft.Storage/storageAccounts/varun06081993adls"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

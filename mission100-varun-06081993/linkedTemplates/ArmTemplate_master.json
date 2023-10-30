@@ -1,0 +1,132 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "mission100-varun-06081993"
+		},
+		"ADLS_CSV_LS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLS_CSV_LS'"
+		},
+		"Generic_blob_LS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Generic_blob_LS'"
+		},
+		"JSON_LS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'JSON_LS'"
+		},
+		"SQL_LS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SQL_LS'"
+		},
+		"ADLS_CSV_LS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://varun06081993adls.dfs.core.windows.net/"
+		},
+		"AKV_LS_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://mission100ade.vault.azure.net/"
+		},
+		"Generic_SQL_LS_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "databasePassword"
+		},
+		"JSON_LS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://varun06081993adls.dfs.core.windows.net/"
+		},
+		"Sch Trigger_properties_Merged_Files_parameters_file": {
+			"type": "string",
+			"defaultValue": "@TriggerBody().fileName"
+		},
+		"Storage Trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/0e92492d-16f9-421f-b8ad-972823ec826c/resourceGroups/azurelib-academy/providers/Microsoft.Storage/storageAccounts/varun06081993adls"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "mission100-varun-06081993_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ADLS_CSV_LS_accountKey": {
+						"value": "[parameters('ADLS_CSV_LS_accountKey')]"
+					},
+					"Generic_blob_LS_connectionString": {
+						"value": "[parameters('Generic_blob_LS_connectionString')]"
+					},
+					"JSON_LS_accountKey": {
+						"value": "[parameters('JSON_LS_accountKey')]"
+					},
+					"SQL_LS_connectionString": {
+						"value": "[parameters('SQL_LS_connectionString')]"
+					},
+					"ADLS_CSV_LS_properties_typeProperties_url": {
+						"value": "[parameters('ADLS_CSV_LS_properties_typeProperties_url')]"
+					},
+					"AKV_LS_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AKV_LS_properties_typeProperties_baseUrl')]"
+					},
+					"JSON_LS_properties_typeProperties_url": {
+						"value": "[parameters('JSON_LS_properties_typeProperties_url')]"
+					},
+					"Storage Trigger_properties_typeProperties_scope": {
+						"value": "[parameters('Storage Trigger_properties_typeProperties_scope')]"
+					},
+					"Generic_SQL_LS_properties_typeProperties_connectionString_secretName": {
+						"value": "[parameters('Generic_SQL_LS_properties_typeProperties_connectionString_secretName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "mission100-varun-06081993_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Sch Trigger_properties_Merged_Files_parameters_file": {
+						"value": "[parameters('Sch Trigger_properties_Merged_Files_parameters_file')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'mission100-varun-06081993_ArmTemplate_0')]"
+			]
+		}
+	]
+}
